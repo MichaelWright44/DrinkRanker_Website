@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, jsonify, request, redirect, url_for, flash
 from config import Config
-from database import db, init_db, Drink
+from database import db, init_db, Drink, DrinkSuggestion
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.DEBUG)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(1000), nullable=False)
+    password_hash = db.Column(db.String(255), nullable=False)
 
     def __init__(self, username, password):
         self.username = username
@@ -83,7 +83,8 @@ def get_drinks():
 def admin():
     logging.debug(f"Accessing admin route. User authenticated: {current_user.is_authenticated}")
     drinks = Drink.query.all()
-    return render_template('admin.html', drinks=drinks)
+    pending_suggestions = DrinkSuggestion.query.filter_by(status='pending').count()
+    return render_template('admin.html', drinks=drinks, pending_suggestions=pending_suggestions)
 
 @app.route('/admin/add', methods=['GET', 'POST'])
 @login_required
@@ -155,6 +156,45 @@ def logout():
     logout_user()
     flash('Logged out successfully.', 'success')
     return redirect(url_for('index'))
+
+@app.route('/suggest', methods=['GET', 'POST'])
+def suggest_drink():
+    if request.method == 'POST':
+        new_suggestion = DrinkSuggestion(
+            name=request.form['name'],
+            source=request.form['source'],
+            description=request.form['description'],
+            submitted_by=request.form['submitted_by']
+        )
+        db.session.add(new_suggestion)
+        db.session.commit()
+        flash('Thank you for your drink suggestion! It has been submitted for review by our administrators.', 'success')
+        return redirect(url_for('index'))
+    return render_template('suggest_drink.html')
+
+@app.route('/admin/suggestions')
+@login_required
+def manage_suggestions():
+    suggestions = DrinkSuggestion.query.all()
+    return render_template('manage_suggestions.html', suggestions=suggestions)
+
+@app.route('/admin/suggestions/<int:id>/approve', methods=['POST'])
+@login_required
+def approve_suggestion(id):
+    suggestion = DrinkSuggestion.query.get_or_404(id)
+    suggestion.status = 'approved'
+    db.session.commit()
+    flash('Suggestion approved!', 'success')
+    return redirect(url_for('manage_suggestions'))
+
+@app.route('/admin/suggestions/<int:id>/reject', methods=['POST'])
+@login_required
+def reject_suggestion(id):
+    suggestion = DrinkSuggestion.query.get_or_404(id)
+    suggestion.status = 'rejected'
+    db.session.commit()
+    flash('Suggestion rejected!', 'success')
+    return redirect(url_for('manage_suggestions'))
 
 if __name__ == '__main__':
     with app.app_context():

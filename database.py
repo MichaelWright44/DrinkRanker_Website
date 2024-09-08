@@ -14,6 +14,17 @@ class Drink(db.Model):
     def __repr__(self):
         return f'<Drink {self.name}>'
 
+class DrinkSuggestion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    source = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    submitted_by = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.String(20), default='pending')
+
+    def __repr__(self):
+        return f'<DrinkSuggestion {self.name}>'
+
 def init_db(app):
     db.init_app(app)
     with app.app_context():
