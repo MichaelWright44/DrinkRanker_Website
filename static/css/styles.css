@@ -1,0 +1,43 @@
+/* Custom styles to enhance the default Tailwind and DataTables styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+#drinkTable_wrapper {
+    padding: 20px;
+}
+
+#drinkTable_filter input {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+#drinkTable_length select {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+}
+
+#drinkTable th {
+    font-weight: 600;
+}
+
+#drinkTable td {
+    vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    #drinkTable_wrapper {
+        padding: 10px;
+    }
+
+    #drinkTable th,
+    #drinkTable td {
+        padding: 0.5rem 0.25rem;
+    }
+}
