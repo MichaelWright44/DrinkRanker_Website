@@ -27,6 +27,18 @@ args = "Flask App"
 task = "workflow.run"
 args = "Flask Upgrade"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Create Migration"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Apply Migration"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Check Upload Folder"
+
 [[workflows.workflow]]
 name = "Run Flask App"
 author = "agent"
@@ -72,6 +84,39 @@ agentRequireRestartOnSave = false
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "FLASK_APP=main.py flask db upgrade"
+
+[[workflows.workflow]]
+name = "Create Migration"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "flask db migrate -m 'Add image_filename to drink table'"
+
+[[workflows.workflow]]
+name = "Apply Migration"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "FLASK_APP=main.py flask db upgrade"
+
+[[workflows.workflow]]
+name = "Check Upload Folder"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 -c \"import os; upload_folder = os.path.join(os.getcwd(), 'static', 'uploads'); os.makedirs(upload_folder, exist_ok=True); print(f'Upload folder: {upload_folder}'); print('Write permissions:', 'Yes' if os.access(upload_folder, os.W_OK) else 'No')\""
 
 [deployment]
 run = ["sh", "-c", "python main.py"]

@@ -36,6 +36,7 @@
             <table class="w-full">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left">Image</th>
                         <th class="py-3 px-6 text-left">Name</th>
                         <th class="py-3 px-6 text-left">Source</th>
                         <th class="py-3 px-6 text-center">Taste</th>
@@ -48,6 +49,13 @@
                 <tbody class="text-gray-600 text-sm font-light">
                     {% for drink in drinks %}
                     <tr class="border-b border-gray-200 hover:bg-gray-100">
+                        <td class="py-3 px-6 text-left">
+                            {% if drink.image_filename %}
+                                <img src="{{ url_for('uploaded_file', filename=drink.image_filename) }}" alt="{{ drink.name }}" class="w-16 h-16 object-cover rounded">
+                            {% else %}
+                                <span class="text-gray-400">No image</span>
+                            {% endif %}
+                        </td>
                         <td class="py-3 px-6 text-left whitespace-nowrap">{{ drink.name }}</td>
                         <td class="py-3 px-6 text-left">{{ drink.source }}</td>
                         <td class="py-3 px-6 text-center">{{ "%.1f"|format(drink.taste) }}</td>

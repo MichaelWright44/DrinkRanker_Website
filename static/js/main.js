@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const table = $('#drinkTable').DataTable({
                 data: data,
                 columns: [
+                    { 
+                        data: 'image_filename',
+                        render: function(data, type, row) {
+                            if (data) {
+                                return `<img src="/uploads/${data}" alt="${row.name}" class="w-16 h-16 object-cover rounded">`;
+                            } else {
+                                return '<span class="text-gray-400">No image</span>';
+                            }
+                        }
+                    },
                     { data: 'name' },
                     { data: 'source' },
                     { 
@@ -32,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }
                 ],
-                order: [[5, 'desc']], // Sort by overall score by default
+                order: [[6, 'desc']], // Sort by overall score by default
                 responsive: true,
                 pageLength: 10,
                 lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
