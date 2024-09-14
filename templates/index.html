@@ -9,13 +9,18 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/synthwave.css') }}">
+    <style>
+        h1.title {
+            text-align: right;
+        }
+    </style>
 </head>
 <body class="bg-black">
     <div class="container mx-auto px-4 py-8">
         <div class="flex justify-center mb-8">
             <img src="{{ url_for('static', filename='drnk_logo.png') }}" alt="DRNK Logo" class="w-48 h-auto">
         </div>
-        <h1 class="text-6xl font-bold text-center mb-8">Drink Ranking</h1>
+        <h1 class="text-6xl font-bold text-center mb-8 title">Drink Ranking</h1>
         <div class="mb-4 flex justify-between items-center">
             <a href="{{ url_for('suggest_drink') }}" class="btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Suggest a Drink</a>
             <a href="{{ url_for('login') }}" class="btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Admin Login</a>
