@@ -4,59 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Drink - Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/synthwave.css') }}">
 </head>
-<body class="bg-gray-100">
+<body class="bg-black">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-center mb-8">Add New Drink</h1>
-        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+        <h1 class="text-6xl font-bold text-center mb-8">Add New Drink</h1>
+        <div class="max-w-md mx-auto bg-opacity-50 bg-gray-900 rounded-lg overflow-hidden md:max-w-lg">
             <div class="md:flex">
                 <div class="w-full px-6 py-8">
                     <form action="{{ url_for('add_drink') }}" method="POST" enctype="multipart/form-data">
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="name">
                                 Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Drink name" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="name" name="name" type="text" placeholder="Drink name" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="source">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="source">
                                 Source
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="source" name="source" type="text" placeholder="Drink source" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="source" name="source" type="text" placeholder="Drink source" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="taste">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="taste">
                                 Taste
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="taste" name="taste" type="number" step="0.1" min="0" max="5" placeholder="Taste score" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="taste" name="taste" type="number" step="0.1" min="0" max="5" placeholder="Taste score" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="cost">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="cost">
                                 Cost
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="cost" name="cost" type="number" step="0.1" min="0" max="5" placeholder="Cost score" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="cost" name="cost" type="number" step="0.1" min="0" max="5" placeholder="Cost score" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="fun_factor">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="fun_factor">
                                 Fun Factor
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fun_factor" name="fun_factor" type="number" step="0.1" min="0" max="5" placeholder="Fun factor score" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="fun_factor" name="fun_factor" type="number" step="0.1" min="0" max="5" placeholder="Fun factor score" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="overall_score">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="overall_score">
                                 Overall Score
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="overall_score" name="overall_score" type="number" step="0.1" min="0" max="5" placeholder="Overall score" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="overall_score" name="overall_score" type="number" step="0.1" min="0" max="5" placeholder="Overall score" required>
                         </div>
                         <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="image">
                                 Drink Image
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" name="image" type="file" accept="image/*">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="image" name="image" type="file" accept="image/*">
                         </div>
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button class="btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Add Drink
                             </button>
                             <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ url_for('admin') }}">

@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suggest a Drink - Drink Ranking Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/synthwave.css') }}">
 </head>
-<body class="bg-gray-100">
+<body class="bg-black">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-center mb-8">Suggest a Drink</h1>
-        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+        <h1 class="text-6xl font-bold text-center mb-8">Suggest a Drink</h1>
+        <div class="max-w-md mx-auto bg-opacity-50 bg-gray-900 rounded-lg overflow-hidden md:max-w-lg">
             <div class="md:flex">
                 <div class="w-full px-6 py-8">
                     {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                             {% for category, message in messages %}
-                                <div class="bg-{{ category }}-100 border border-{{ category }}-400 text-{{ category }}-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                <div class="bg-{{ category }}-600 bg-opacity-50 border border-{{ category }}-400 text-{{ category }}-100 px-4 py-3 rounded relative mb-4" role="alert">
                                     <span class="block sm:inline">{{ message }}</span>
                                 </div>
                             {% endfor %}
@@ -23,31 +26,31 @@
                     {% endwith %}
                     <form action="{{ url_for('suggest_drink') }}" method="POST">
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="name">
                                 Drink Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Drink name" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="name" name="name" type="text" placeholder="Drink name" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="source">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="source">
                                 Source
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="source" name="source" type="text" placeholder="Drink source" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="source" name="source" type="text" placeholder="Drink source" required>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="description">
                                 Description
                             </label>
-                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" name="description" rows="4" placeholder="Describe the drink" required></textarea>
+                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="description" name="description" rows="4" placeholder="Describe the drink" required></textarea>
                         </div>
                         <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="submitted_by">
+                            <label class="block text-gray-300 text-sm font-bold mb-2" for="submitted_by">
                                 Your Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="submitted_by" name="submitted_by" type="text" placeholder="Your name" required>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline bg-opacity-50 bg-gray-800" id="submitted_by" name="submitted_by" type="text" placeholder="Your name" required>
                         </div>
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button class="btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Submit Suggestion
                             </button>
                             <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="{{ url_for('index') }}">

@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Ranking Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/synthwave.css') }}">
 </head>
-<body class="bg-gray-100">
+<body class="bg-black">
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-center mb-8">Drink Ranking</h1>
+        <h1 class="text-6xl font-bold text-center mb-8">Drink Ranking</h1>
         <div class="mb-4 flex justify-between items-center">
-            <a href="{{ url_for('suggest_drink') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Suggest a Drink</a>
-            <a href="{{ url_for('login') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Admin Login</a>
+            <a href="{{ url_for('suggest_drink') }}" class="btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Suggest a Drink</a>
+            <a href="{{ url_for('login') }}" class="btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Admin Login</a>
         </div>
-        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-opacity-50 bg-gray-900 shadow-lg rounded-lg overflow-hidden">
             <table id="drinkTable" class="w-full">
                 <thead>
-                    <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <tr class="bg-purple-900 text-white uppercase text-sm leading-normal">
                         <th class="py-3 px-6 text-left">Image</th>
                         <th class="py-3 px-6 text-left">Name</th>
                         <th class="py-3 px-6 text-left">Source</th>
@@ -28,7 +30,7 @@
                         <th class="py-3 px-6 text-center">Overall Score</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-600 text-sm font-light">
+                <tbody class="text-gray-300 text-sm font-light">
                     <!-- Table rows will be populated by JavaScript -->
                 </tbody>
             </table>
