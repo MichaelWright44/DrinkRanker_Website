@@ -5,6 +5,7 @@
   --background-color: #1a1a2e;
   --text-color: #ffffff;
   --accent-color: #ff00aa;
+  --table-bg-color: rgba(0, 0, 0, 0.8);
 }
 
 body {
@@ -49,7 +50,7 @@ table {
 
 th, td {
   padding: 12px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--table-bg-color);
   border-bottom: 1px solid var(--primary-color);
 }
 
@@ -127,4 +128,25 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:foc
 .dataTables_paginate .paginate_button.current {
   background-color: var(--secondary-color) !important;
   color: var(--background-color) !important;
+}
+
+/* Logo styling */
+.logo {
+  max-width: 200px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* Glow effect for headings */
+h1 {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 15px var(--accent-color);
+  }
+  to {
+    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 30px var(--accent-color);
+  }
 }
