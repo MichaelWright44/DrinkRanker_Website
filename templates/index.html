@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Head content remains the same -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Ranking Website</title>
@@ -10,17 +11,35 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/synthwave.css') }}">
     <style>
+        /* Center the title */
         h1.title {
-            text-align: right;
+            text-align: center;
+        }
+        /* Adjust the logo image to align with text */
+        .logo-image {
+            height: 1em;
+            vertical-align: middle;
+        }
+        /* Shift the "Ranking" text down */
+        .ranking-text {
+            position: relative;
+            top: 0.2em; /* Adjust this value as needed */
         }
     </style>
 </head>
 <body class="bg-black">
     <div class="container mx-auto px-4 py-8">
+        <!-- Remove the separate logo image if it's still present -->
+        <!--
         <div class="flex justify-center mb-8">
             <img src="{{ url_for('static', filename='drnk_logo.png') }}" alt="DRNK Logo" class="w-48 h-auto">
         </div>
-        <h1 class="text-6xl font-bold text-center mb-8 title">Drink Ranking</h1>
+        -->
+        <!-- Modified title with logo image and adjusted text -->
+        <h1 class="text-8xl font-bold text-center mb-4 title">
+            <img src="{{ url_for('static', filename='drnk_logo.png') }}" alt="Drink Logo" class="inline-block logo-image">
+            <span class="ranking-text">Ranking</span>
+        </h1>
         <div class="mb-4 flex justify-between items-center">
             <a href="{{ url_for('suggest_drink') }}" class="btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">Suggest a Drink</a>
             <a href="{{ url_for('login') }}" class="btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Admin Login</a>
@@ -45,6 +64,7 @@
         </div>
     </div>
 
+    <!-- Scripts remain the same -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
